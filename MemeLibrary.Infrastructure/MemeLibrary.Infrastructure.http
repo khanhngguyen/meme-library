@@ -1,0 +1,6 @@
+# @MemeLibrary.Infrastructure_HostAddress = http://localhost:5218
+
+# GET {{MemeLibrary.Infrastructure_HostAddress}}/weatherforecast/
+# Accept: application/json
+
+# ###

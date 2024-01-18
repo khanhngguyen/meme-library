@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemeLibrary.Domain", "MemeLibrary.Domain\MemeLibrary.Domain.csproj", "{A8B65F2C-242C-4A57-88EB-095442B09938}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemeLibrary.Infrastructure", "MemeLibrary.Infrastructure\MemeLibrary.Infrastructure.csproj", "{46570C21-9582-4024-8059-B2566F949370}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemeLibrary.Application", "MemeLibrary.Application\MemeLibrary.Application.csproj", "{408EE41F-DC18-4262-A2E1-578B60634505}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemeLibrary.Web", "MemeLibrary.Web\MemeLibrary.Web.csproj", "{B4D08600-BEE1-43AF-B4A8-86D8EED13B38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemeLibrary.Tests", "MemeLibrary.Tests\MemeLibrary.Tests.csproj", "{B053111F-2F8C-495B-85F4-43B6B3E23C97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8B65F2C-242C-4A57-88EB-095442B09938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8B65F2C-242C-4A57-88EB-095442B09938}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8B65F2C-242C-4A57-88EB-095442B09938}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8B65F2C-242C-4A57-88EB-095442B09938}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46570C21-9582-4024-8059-B2566F949370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46570C21-9582-4024-8059-B2566F949370}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46570C21-9582-4024-8059-B2566F949370}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46570C21-9582-4024-8059-B2566F949370}.Release|Any CPU.Build.0 = Release|Any CPU
+		{408EE41F-DC18-4262-A2E1-578B60634505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{408EE41F-DC18-4262-A2E1-578B60634505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{408EE41F-DC18-4262-A2E1-578B60634505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{408EE41F-DC18-4262-A2E1-578B60634505}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4D08600-BEE1-43AF-B4A8-86D8EED13B38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4D08600-BEE1-43AF-B4A8-86D8EED13B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4D08600-BEE1-43AF-B4A8-86D8EED13B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4D08600-BEE1-43AF-B4A8-86D8EED13B38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B053111F-2F8C-495B-85F4-43B6B3E23C97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B053111F-2F8C-495B-85F4-43B6B3E23C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B053111F-2F8C-495B-85F4-43B6B3E23C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B053111F-2F8C-495B-85F4-43B6B3E23C97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
