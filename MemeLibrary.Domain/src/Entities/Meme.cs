@@ -12,5 +12,6 @@ namespace MemeLibrary.Domain.src.Entities
         public Uri Url { get; set; } = default!;
         public int Width { get; set; } = default!;
         public int Height { get; set; } = default!;
+        public int Captions { get; set; } = default!;
     }
 }
