@@ -1,7 +1,25 @@
+using Microsoft.EntityFrameworkCore;
+
+using MemeLibrary.Application.src.ServiceInterfaces;
+using MemeLibrary.Application.src.Services;
+using MemeLibrary.Domain.src.RepoInterfaces;
+using MemeLibrary.Infrastructure.src.Database;
+using MemeLibrary.Infrastructure.src.RepoImplementations;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+// Add database
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<DatabaseContext>(options =>
+{
+    options.UseNpgsql(connectionString).UseCamelCaseNamingConvention();
+});
+// Repo
+builder.Services.AddScoped<IMemeRepo, MemeRepo>();
+// Services
+builder.Services.AddScoped<IMemeService, MemeService>();
 
 var app = builder.Build();
 

@@ -9,7 +9,7 @@ namespace MemeLibrary.Domain.src.Entities
     {
         public string Search { get; set; } = string.Empty;
         public string OrderBy { get; set; } = string.Empty;
-        public int PageNumber { get; set; } = default!;
-        public int PageSize { get; set; } = default!;
+        public int PageNumber { get; set; } = 0;
+        public int PageSize { get; set; } = 20;
     }
 }

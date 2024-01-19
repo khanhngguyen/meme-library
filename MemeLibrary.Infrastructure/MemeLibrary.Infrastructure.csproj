@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MemeLibrary.Domain\MemeLibrary.Domain.csproj" />
+    <ProjectReference Include="..\MemeLibrary.Application\MemeLibrary.Application.csproj" />
   </ItemGroup>
 
 </Project>

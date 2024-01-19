@@ -8,7 +8,10 @@
 
 <div>
     <ul>
-        <li>hihi</li>
-        <li>hehe</li>
+        @foreach(var meme in Model.MemeList)
+        {
+            <li>@meme.Name</li>
+            @* <img src="@meme.Url" />  *@
+        }
     </ul>
 </div>
