@@ -4,14 +4,119 @@
     ViewData["Title"] = "Memes";
 }
 
-<h1>@ViewData["Title"]</h1>
-
 <div>
-    <ul>
-        @foreach(var meme in Model.MemeList)
+    <div class="container">
+        <h5 class="text-center mt-4">Top 100 most popular memes</h5>
+
+        <div class="container d-flex justify-content-between my-4">
+            @* search bar *@
+            <div class="w-50">
+                <form 
+                    class="input-group"
+                    method="get" 
+                    asp-page-handler="OnSearch" 
+                >
+                    <input 
+                        type="search" 
+                        class="form-control rounded" 
+                        placeholder="Search meme by name" 
+                        aria-label="Search" 
+                        aria-describedby="search-addon"  
+                        name="search"
+                    />
+
+                    <span class="input-group-text border-1" id="search-addon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                        </svg>
+                    </span>
+                </form>
+            </div>
+
+            @* Order by dropdown *@
+            <form 
+                class="form-group"
+                id="orderBy"
+                method="get" 
+                asp-page-handler="OnOrderBy"
+            >
+                <div class="input-group align-items-center">
+                    <label for="selectOrderBy" class="me-2">Oder by</label>
+                    <select class="form-control" id="selectOrderBy" name="OrderBy">
+                        <option value="">Default</option>
+                        <option value="Most popular">Most popular</option>
+                        <option value="Least popular">Least popular</option>
+                        <option value="A - Z">A - Z</option>
+                        <option value="Z - A">Z - A</option>
+                    </select>
+                </div>
+            </form>
+
+        </div>
+
+        @* render MemeList based on its content *@
+        @if (@Model.MemeList.Count() == 0 )
         {
-            <li>@meme.Name</li>
-            @* <img src="@meme.Url" />  *@
+            <div class="container text-center">
+                <p>Nothing to display</p>
+                <a href="Memes">Click to reload all memes</a>
+            </div>
+        } else 
+        {
+            @* display memes in grid with 4 columns *@
+            <div class="container text-center">
+                <div class="row row-cols-4 g-3">
+                        @* each meme is in a card element *@
+                        @foreach(var meme in Model.MemeList)
+                        {
+                            <div class="col">
+                                <div class="card">
+                                    <img src="@meme.Url" class="card-img-top" alt="image link">
+                                    <div class="card-body">
+                                        <h6 
+                                            class="card-title mb-0 overflow-auto" 
+                                            style="word-wrap: normal; text-overflow: clip"
+                                        >@meme.Name</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                </div>
+            </div>
+
+            @* pagination *@
+            <div class="d-flex justify-content-center">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         }
-    </ul>
+
+    </div>
 </div>
+
+@* script to make orderBy form submit when changing select input *@
+@section scripts 
+{
+    <script>
+        $(function () {
+            $("#selectOrderBy").change(function() {
+                $("#orderBy").submit();
+            })
+        })
+    </script>
+}

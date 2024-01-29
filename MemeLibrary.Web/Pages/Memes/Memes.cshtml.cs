@@ -16,6 +16,8 @@ namespace MemeLibrary.Web.Pages.Memes
         private readonly ILogger<Memes> _logger;
         private readonly IMemeService _memeService;
         public IEnumerable<Meme> MemeList { get; set; } = default!; 
+
+        [BindProperty(SupportsGet = true)]
         public QueryOptions QueryOptions { get; set; } = new QueryOptions {
             Search =  string.Empty,
             OrderBy  = string.Empty,
@@ -31,6 +33,20 @@ namespace MemeLibrary.Web.Pages.Memes
 
         public async Task<IActionResult> OnGet()
         {
+            MemeList = await _memeService.GetAll(QueryOptions);
+            return Page();
+        }
+
+        public async Task<IActionResult> OnSearch (string searchQuery)
+        {
+            QueryOptions.Search = searchQuery;
+            MemeList = await _memeService.GetAll(QueryOptions);
+            return Page();
+        }
+
+        public async Task<IActionResult> OnOrderBy (string orderByQuery)
+        {
+            QueryOptions.OrderBy = orderByQuery;
             MemeList = await _memeService.GetAll(QueryOptions);
             return Page();
         }
