@@ -50,5 +50,10 @@ namespace MemeLibrary.Infrastructure.src.RepoImplementations
 
             // return base.GetAll(queryOptions);
         }
+
+        public async Task<int> GetLength()
+        {
+            return await _dbSet.CountAsync();
+        }
     }
 }

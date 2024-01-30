@@ -25,6 +25,14 @@ namespace MemeLibrary.Web.Pages.Memes
             PageSize = 20,
         };
 
+        // props for pagination
+        public int PageIndex { get; private set; }
+        public int PageSize { get; private set; } = 20;
+        public int TotalPages { get; private set; }
+        public bool HasPreviousPage => PageIndex > 0;
+
+        public bool HasNextPage => PageIndex < (TotalPages - 1);
+
         public Memes(ILogger<Memes> logger, IMemeService memeService)
         {
             _logger = logger;
@@ -34,6 +42,19 @@ namespace MemeLibrary.Web.Pages.Memes
         public async Task<IActionResult> OnGet()
         {
             MemeList = await _memeService.GetAll(QueryOptions);
+
+            // get total pages for pagination
+            GetTotalPages();
+            
+            // get current page index from query
+            string pageNumberQueryParam = Request.Query["pagenumber"];
+            if (!int.TryParse(pageNumberQueryParam, out int pageNumber))
+            {
+                // If parsing fails, set a default value to 0
+                pageNumber = 0;
+            }
+            PageIndex = pageNumber;
+
             return Page();
         }
 
@@ -50,5 +71,21 @@ namespace MemeLibrary.Web.Pages.Memes
             MemeList = await _memeService.GetAll(QueryOptions);
             return Page();
         }
+
+        // get Total Pages from total entities count 
+        private async void GetTotalPages()
+        {
+            double entityCount =  await _memeService.GetEntityCount();
+            TotalPages = (int) Math.Ceiling(entityCount / PageSize);
+        }
+
+        // public async Task<IActionResult> OnSelectPage(int pageNumber)
+        // {
+        //     PageIndex = pageNumber;
+        //     QueryOptions.PageNumber = pageNumber;
+        //     QueryOptions.PageSize = 5;
+        //     MemeList = await _memeService.GetAll(QueryOptions);
+        //     return Page();
+        // }
     }
 }

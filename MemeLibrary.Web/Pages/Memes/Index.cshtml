@@ -33,7 +33,7 @@
                 </form>
             </div>
 
-            @* Order by dropdown *@
+            @* Order by select *@
             <form 
                 class="form-group"
                 id="orderBy"
@@ -42,12 +42,29 @@
             >
                 <div class="input-group align-items-center">
                     <label for="selectOrderBy" class="me-2">Oder by</label>
-                    <select class="form-control" id="selectOrderBy" name="OrderBy">
+                    <select class="form-control" id="selectOrderBy" name="orderby">
                         <option value="">Default</option>
                         <option value="Most popular">Most popular</option>
                         <option value="Least popular">Least popular</option>
                         <option value="A - Z">A - Z</option>
                         <option value="Z - A">Z - A</option>
+                    </select>
+                </div>
+            </form>
+
+            @* Results per page select *@
+            <form 
+                class="form-group"
+                id="perPage"
+                method="get" 
+            >
+                <div class="input-group align-items-center">
+                    <label for="selectPerPage" class="me-2">Results per page</label>
+                    <select class="form-control" id="selectPerPage" name="pagesize">
+                        <option value={20}>20</option>
+                        <option value={30}>30</option>
+                        <option value={50}>50</option>
+                        <option value={60}>60</option>
                     </select>
                 </div>
             </form>
@@ -85,21 +102,35 @@
             </div>
 
             @* pagination *@
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center my-4">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                        <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
+                        @* Previous page arrow *@
+                        <li class="page-item @(@Model.HasPreviousPage ? "" : "disabled")">
+                            <a 
+                                class="page-link" 
+                                href="/Memes?pagenumber=@(@Model.PageIndex - 1)"
+                                aria-label="Previous page"
+                            >
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
                         </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
+                        @* Display all pages *@
+                        @for (int i = 0; i < @Model.TotalPages; i++)
+                        {
+                            <li class="page-item + @(i == @Model.PageIndex ? "active" : "")">
+                                <a class="page-link" href="/Memes?pagenumber=@i">@(i + 1)</a>
+                            </li>
+                        }
+                        @* Next Page arrow *@
+                        <li class="page-item @(@Model.HasNextPage ? "" : "disabled")">
+                            <a 
+                                class="page-link" 
+                                href="/Memes?pagenumber=@(@Model.PageIndex + 1)"
+                                aria-label="Next page"
+                            >
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
                         </li>
                     </ul>
                 </nav>

@@ -9,6 +9,7 @@ namespace MemeLibrary.Domain.src.RepoInterfaces
 {
     public interface IMemeRepo : IBaseRepo<Meme>
     {
-        
+        Task<int> GetLength();
     }
+
 }

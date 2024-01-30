@@ -11,5 +11,6 @@ namespace MemeLibrary.Application.src.ServiceInterfaces
     {
         Task<IEnumerable<Meme>> GetAll(QueryOptions queryOptions);
         Task<Meme> GetOneById (string id);
+        Task<int> GetEntityCount();
     }
 }
