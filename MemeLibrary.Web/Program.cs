@@ -40,4 +40,6 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+app.UseStatusCodePagesWithReExecute("/Error");
+
 app.Run();

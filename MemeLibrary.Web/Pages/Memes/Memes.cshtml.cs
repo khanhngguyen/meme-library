@@ -79,11 +79,22 @@ namespace MemeLibrary.Web.Pages.Memes
             TotalPages = (int) Math.Ceiling(entityCount / PageSize);
         }
 
-        // public async Task<IActionResult> OnSelectPage(int pageNumber)
+        public async Task<IActionResult> OnSelectPage(int pageNumber)
+        {
+            PageIndex = pageNumber;
+            QueryOptions.PageNumber = pageNumber;
+            // QueryOptions.PageSize = 5;
+            MemeList = await _memeService.GetAll(QueryOptions);
+            return Page();
+        }
+        
+        // public async Task<IActionResult> OnSelectPageSize(int pageSize)
         // {
-        //     PageIndex = pageNumber;
-        //     QueryOptions.PageNumber = pageNumber;
-        //     QueryOptions.PageSize = 5;
+        //     PageSize = pageSize;
+        //     QueryOptions.PageSize = pageSize;
+
+        //     // recount Total Pages
+        //     GetTotalPages();
         //     MemeList = await _memeService.GetAll(QueryOptions);
         //     return Page();
         // }

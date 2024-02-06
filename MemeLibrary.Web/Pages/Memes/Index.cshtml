@@ -53,21 +53,22 @@
             </form>
 
             @* Results per page select *@
-            <form 
+            @* <form 
                 class="form-group"
                 id="perPage"
-                method="get" 
+                method="get"
+                asp-page-handler="OnSelectPageSize"
             >
                 <div class="input-group align-items-center">
                     <label for="selectPerPage" class="me-2">Results per page</label>
                     <select class="form-control" id="selectPerPage" name="pagesize">
-                        <option value={20}>20</option>
-                        <option value={30}>30</option>
-                        <option value={50}>50</option>
-                        <option value={60}>60</option>
+                        <option value=20>20</option>
+                        <option value=30>30</option>
+                        <option value=50>50</option>
+                        <option value=60>60</option>
                     </select>
                 </div>
-            </form>
+            </form> *@
 
         </div>
 
@@ -141,12 +142,18 @@
 </div>
 
 @* script to make orderBy form submit when changing select input *@
+@* script to make select page size form submit when changing select input *@
 @section scripts 
 {
     <script>
         $(function () {
             $("#selectOrderBy").change(function() {
                 $("#orderBy").submit();
+            })
+        });
+        $(function () {
+            $("#selectPerPage").change(function () {
+                $("#perPage").submit();
             })
         })
     </script>
