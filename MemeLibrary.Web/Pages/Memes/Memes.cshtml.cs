@@ -73,9 +73,9 @@ namespace MemeLibrary.Web.Pages.Memes
         }
 
         // get Total Pages from total entities count 
-        private async void GetTotalPages()
+        private void GetTotalPages()
         {
-            double entityCount =  await _memeService.GetEntityCount();
+            double entityCount =  _memeService.GetEntityCount();
             TotalPages = (int) Math.Ceiling(entityCount / PageSize);
         }
 

@@ -1,5 +1,5 @@
 ## Meme Library
-This project is learn and practice ASP\.NET Razor Pages and Bootstrap to create simple frontend web pages
+This purpose of this project is to learn and practice ASP\.NET Razor Pages and Bootstrap to create simple frontend web pages
 - Frontend: ASP\.NET Razor Pages, Bootstrap
 - Backend: ASP\.NET Core, Entity Framework, PostgreSQL
 
@@ -10,6 +10,9 @@ This project is learn and practice ASP\.NET Razor Pages and Bootstrap to create 
 4. [Local run](#4-local-run)
 
 #### 1. Demo
+[Live demo on Azure Web App](https://meme-library.azurewebsites.net/)
+
+
 Homepage
 ![Homepage](./assets/demo-hompage.png)
 

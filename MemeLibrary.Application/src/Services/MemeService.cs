@@ -28,9 +28,9 @@ namespace MemeLibrary.Application.src.Services
             return await _memeRepo.GetOneById(id);
         }
 
-        public async Task<int> GetEntityCount()
+        public int GetEntityCount()
         {
-            return await _memeRepo.GetLength();
+            return _memeRepo.GetLength();
         }
     }
 }

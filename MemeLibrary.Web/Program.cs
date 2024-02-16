@@ -14,6 +14,15 @@ builder.Services.AddRazorPages();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<DatabaseContext>(options =>
 {
+    options.EnableDetailedErrors();
+    options.UseNpgsql(builder => 
+    {
+        builder.EnableRetryOnFailure(
+            maxRetryCount: 10,
+            maxRetryDelay: TimeSpan.FromMinutes(5),
+            errorCodesToAdd: null
+        );
+    });
     options.UseNpgsql(connectionString).UseCamelCaseNamingConvention();
 });
 // Repo
